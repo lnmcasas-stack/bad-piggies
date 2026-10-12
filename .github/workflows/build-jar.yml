@@ -22,8 +22,8 @@ jobs:
       run: chmod +x gradlew
       working-directory: pigbuilder
 
-    - name: Force Build with Gradle
-      run: ./gradlew jar --no-daemon -x test -x check
+    - name: Assemble with Gradle
+      run: ./gradlew assemble --no-daemon -x test
       working-directory: pigbuilder
 
     - name: Upload Mod JAR
