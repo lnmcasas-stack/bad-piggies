@@ -1,8 +1,9 @@
-name: Build Minecraft Mod
+name: Debug and Force Build
 
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch: # Allows you to run it manually
 
 jobs:
   build:
@@ -18,16 +19,16 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Grant Execute Permission for Gradlew
+    - name: Grant Execute Permission
       run: chmod +x gradlew
       working-directory: pigbuilder
 
-    - name: Assemble with Gradle
-      run: ./gradlew assemble --no-daemon -x test
+    - name: Run Build Command
+      run: ./gradlew build -x test --no-daemon
       working-directory: pigbuilder
 
-    - name: Upload Mod JAR
+    - name: Upload JAR
       uses: actions/upload-artifact@v4
       with:
         name: minecraft-mod-jar
-        path: pigbuilder/build/libs/*.jar
+        path: pigbuilder/build/libs/
