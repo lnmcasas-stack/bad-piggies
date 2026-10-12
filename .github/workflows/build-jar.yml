@@ -1,4 +1,4 @@
-name: Build Java JAR
+name: Build Minecraft Mod
 
 on:
   push:
@@ -15,26 +15,19 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v5
       with:
-        java-version: '17'
+        java-version: '17' # Change to '16' or '8' if you are building for an older Minecraft version
         distribution: 'temurin'
 
-    - name: Create Build Directory
-      run: mkdir -p out
+    - name: Grant Execute Permission for Gradlew
+      run: chmod +x gradlew
+      working-directory: pigbuilder
 
-    - name: Compile Java Files
-      run: |
-        find pigbuilder -name "*.java" > sources.txt
-        if [ -s sources.txt ]; then
-          javac -d out @sources.txt
-        else
-          echo "No .java files found in pigbuilder directory!" && exit 1
-        fi
+    - name: Build Mod with Gradle
+      run: ./gradlew build -x test
+      working-directory: pigbuilder
 
-    - name: Create JAR File
-      run: jar cvf app.jar -C out .
-
-    - name: Upload JAR Artifact
+    - name: Upload Mod JAR
       uses: actions/upload-artifact@v4
       with:
-        name: compiled-jar-file
-        path: app.jar
+        name: minecraft-mod-jar
+        path: pigbuilder/build/libs/*.jar
