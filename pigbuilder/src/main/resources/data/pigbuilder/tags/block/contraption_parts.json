@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "pigbuilder:frame_block",
+    "pigbuilder:wheel_block",
+    "pigbuilder:propeller_block",
+    "#minecraft:planks",
+    "#minecraft:logs",
+    "#minecraft:wool",
+    "minecraft:iron_block",
+    "minecraft:glass"
+  ]
+}

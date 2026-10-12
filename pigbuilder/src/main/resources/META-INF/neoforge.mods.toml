@@ -1,0 +1,25 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "MIT"
+
+[[mods]]
+modId = "pigbuilder"
+version = "1.0.0"
+displayName = "Side-Scroll Smasher"
+description = '''
+A 2.5D side-view mode for Minecraft: smash and push blocks, build and drive block contraptions. Original code and assets.
+'''
+
+[[dependencies.pigbuilder]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.11,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.pigbuilder]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.11]"
+ordering = "NONE"
+side = "BOTH"

@@ -1,0 +1,4 @@
+{ "type": "minecraft:crafting_shaped", "category": "building",
+  "key": { "F": "pigbuilder:frame_block", "I": "minecraft:iron_ingot" },
+  "pattern": ["FFF", "FIF", "FFF"],
+  "result": { "id": "pigbuilder:wheel_block", "count": 2 } }

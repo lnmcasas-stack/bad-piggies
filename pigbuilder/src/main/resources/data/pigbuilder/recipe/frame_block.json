@@ -1,0 +1,4 @@
+{ "type": "minecraft:crafting_shaped", "category": "building",
+  "key": { "P": "#minecraft:planks" },
+  "pattern": ["PP", "PP"],
+  "result": { "id": "pigbuilder:frame_block", "count": 4 } }

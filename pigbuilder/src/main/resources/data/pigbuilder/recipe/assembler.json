@@ -1,0 +1,4 @@
+{ "type": "minecraft:crafting_shaped", "category": "equipment",
+  "key": { "P": "#minecraft:planks", "I": "minecraft:iron_ingot", "S": "minecraft:stick" },
+  "pattern": ["PIP", " S ", " S "],
+  "result": { "id": "pigbuilder:assembler", "count": 1 } }
