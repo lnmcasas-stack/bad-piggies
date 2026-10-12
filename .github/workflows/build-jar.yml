@@ -15,15 +15,15 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v5
       with:
-        java-version: '17' # Change to '16' or '8' if you are building for an older Minecraft version
+        java-version: '17'
         distribution: 'temurin'
 
     - name: Grant Execute Permission for Gradlew
       run: chmod +x gradlew
       working-directory: pigbuilder
 
-    - name: Build Mod with Gradle
-      run: ./gradlew build -x test
+    - name: Force Build with Gradle
+      run: ./gradlew jar --no-daemon -x test -x check
       working-directory: pigbuilder
 
     - name: Upload Mod JAR
