@@ -1,0 +1,29 @@
+name: Build Java JAR
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17' # Change to your required Java version
+        distribution: 'temurin'
+        cache: 'maven'
+
+    - name: Build JAR with Maven
+      run: mvn clean package -DskipTests
+
+    - name: Upload JAR Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiled-jar-file
+        path: target/*.jar # Extracts the JAR from the target folder
