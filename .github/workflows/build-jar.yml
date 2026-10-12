@@ -18,12 +18,23 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Build JAR with Maven
-      run: mvn clean package -DskipTests
-      working-directory: pigbuilder
+    - name: Create Build Directory
+      run: mkdir -p out
+
+    - name: Compile Java Files
+      run: |
+        find pigbuilder -name "*.java" > sources.txt
+        if [ -s sources.txt ]; then
+          javac -d out @sources.txt
+        else
+          echo "No .java files found in pigbuilder directory!" && exit 1
+        fi
+
+    - name: Create JAR File
+      run: jar cvf app.jar -C out .
 
     - name: Upload JAR Artifact
       uses: actions/upload-artifact@v4
       with:
         name: compiled-jar-file
-        path: pigbuilder/target/*.jar
+        path: app.jar
